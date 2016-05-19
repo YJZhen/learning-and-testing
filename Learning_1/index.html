@@ -2,12 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>监听列表的点击事件,并获取点击元素的索引</title>
+    <style type="text/css">
+        #list-box{
+            cursor:pointer;
+        }
+        #list-box li:hover{
+            background-color:#ccc;
+        }
+    </style>
 </head>
 <body>
-    <ul>
-        <li>item 1</li>
-        <li>item 2</li>
+    <ul id="list-box">
+        <li><span>item 1</span></li>
+        <li><span>item 2</span></li>
         <li>item 3</li>
         <li>item 4</li>
         <li>item 5</li>
@@ -30,5 +38,25 @@
         <li>item 22</li>
         <li>item 23</li>
     </ul>
+    <script type="text/javascript">
+        var listBox=document.getElementById('list-box');
+        function listClickFun(event){
+            var clickObj=event.target?event.target:event.srcElement;
+            var parentObj=clickObj.parentNode?clickObj.parentNode:clickObj.parentElement;
+            console.log(event);
+//            console.log('',parentObj.children);
+            for(var i=0;i<parentObj.children.length;i++){
+                if(parentObj.children[i]==clickObj){
+                    console.log(1+i);
+                }
+            }
+        }
+        if(listBox.addEventListener){
+            listBox.addEventListener('click',listClickFun,false);
+        }
+        else if(listBox.attachEvent){
+            listBox.attachEvent('onclick',listClickFun);
+        }
+    </script>
 </body>
 </html>
