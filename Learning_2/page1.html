@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>声明提升</title>
+</head>
+<body>
+<script>
+    function test1(){
+        console.log('b1_1',b1);
+        console.log('b2_1',b2);
+        b1=222;
+        if(true){
+            var b1=12;
+            for(var b2=2;b2<10;b2++){
+
+            }
+            console.log('b2_2',b2);
+        }
+        console.log('b1_2',b1);
+        console.log('b2_3',b2);
+    }
+</script>
+<script>
+    var c1=1;
+    function fun1(){
+        console.log(c1);
+        var c1=2;
+        console.log(c1);
+    }
+</script>
+</body>
+</html>
